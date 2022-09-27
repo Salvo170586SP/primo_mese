@@ -17,7 +17,10 @@ class FlightFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'numero_volo' => $this->faker->randomNumber(5, true),
+            'partenza' => $this->faker->city(),
+            'destinazione' => $this->faker->city(),
+            'data_volo'=> $this->faker->date(),
         ];
     }
 }

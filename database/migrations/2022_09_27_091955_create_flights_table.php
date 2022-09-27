@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('flights', function (Blueprint $table) {
             $table->id();
+
+            $table->string('numero_volo');
+            $table->string('partenza');
+            $table->string('destinazione');
+            $table->date('data_volo');
+            
             $table->timestamps();
         });
     }

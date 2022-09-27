@@ -14,7 +14,9 @@ class FlightController extends Controller
      */
     public function index()
     {
-        //
+        $flights = Flight::all();
+
+        return view('admin.flights.index',compact('flights'));
     }
 
     /**

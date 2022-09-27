@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PassengerController;
+use App\Http\Controllers\FlightController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +29,6 @@ require __DIR__.'/auth.php';
 
 Route::prefix('admin')->name('admin.')->group(function () {
   Route::resource('passengers', PassengerController::class);
+  Route::resource('flights', FlightController::class);
 
 });

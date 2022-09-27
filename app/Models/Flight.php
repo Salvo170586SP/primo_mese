@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Flight extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'numero_volo',
+        'partenza',
+        'destinazione',
+        'data_volo'
+    ];
 }

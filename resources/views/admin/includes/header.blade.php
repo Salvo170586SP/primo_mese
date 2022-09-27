@@ -12,6 +12,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.passengers.index') }}">Passeggeri</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.flights.index') }}">Voli</a>
+          </li>
         </ul>
       </div>
     </div>
