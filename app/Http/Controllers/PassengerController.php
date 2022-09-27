@@ -14,7 +14,7 @@ class PassengerController extends Controller
      */
     public function index()
     {
-        $passengers = Passenger::all();
+        $passengers = Passenger::paginate(5);
         return view('admin.passengers.index', compact('passengers'));
     }
 
@@ -40,7 +40,7 @@ class PassengerController extends Controller
             'Name' => 'required',
             'Surname' => 'required',
             'Birthday' => 'required',
-        ],[
+        ], [
             'Name.required' => 'Il campo del nome è obbligatorio',
             'Surname.required' => 'Il campo del cognome è obbligatorio',
             'Birthday.required' => 'Il campo della data è obbligatorio',
@@ -50,7 +50,7 @@ class PassengerController extends Controller
         $new_passenger->fill($request->all());
         $new_passenger->save();
 
-        return redirect()->route('admin.passengers.index')->with('success',"Il passeggero $new_passenger->Name $new_passenger->Surname è stato aggiunto");
+        return redirect()->route('admin.passengers.index')->with('success', "Il passeggero $new_passenger->Name $new_passenger->Surname è stato aggiunto");
     }
 
     /**
@@ -88,7 +88,7 @@ class PassengerController extends Controller
             'Name' => 'required',
             'Surname' => 'required',
             'Birthday' => 'required',
-        ],[
+        ], [
             'Name.required' => 'Il campo del nome è obbligatorio',
             'Surname.required' => 'Il campo del cognome è obbligatorio',
             'Birthday.required' => 'Il campo della data è obbligatorio',
@@ -96,7 +96,7 @@ class PassengerController extends Controller
 
         $passenger->update($request->all());
 
-        return redirect()->route('admin.passengers.index')->with('success',"Il passeggero $passenger->Name $passenger->Surname è stato modificato");
+        return redirect()->route('admin.passengers.index')->with('success', "Il passeggero $passenger->Name $passenger->Surname è stato modificato");
     }
 
     /**
@@ -109,6 +109,6 @@ class PassengerController extends Controller
     {
 
         $passenger->delete();
-        return redirect()->route('admin.passengers.index')->with('success',"Il passeggero $passenger->Name $passenger->Surname è stato eliminato");
+        return redirect()->route('admin.passengers.index')->with('success', "Il passeggero $passenger->Name $passenger->Surname è stato eliminato");
     }
 }

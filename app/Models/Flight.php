@@ -15,4 +15,12 @@ class Flight extends Model
         'destinazione',
         'data_volo'
     ];
+
+    /**
+     * The users that belong to the hobby.
+     */
+    public function passengers()
+    {
+        return $this->belongsToMany(Passenger::class);
+    }
 }

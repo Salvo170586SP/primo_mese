@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Flight;
+use App\Models\Passenger;
 use Illuminate\Http\Request;
 
 class FlightController extends Controller
@@ -46,9 +47,14 @@ class FlightController extends Controller
      * @param  \App\Models\Flight  $flight
      * @return \Illuminate\Http\Response
      */
-    public function show(Flight $flight)
+    public function show($id)
     {
-        //
+
+        $passenger = Passenger::find($id);
+        $flights = Passenger::find($id)->flights;
+
+
+        return view('admin.flights.show', compact('flights', 'passenger'));
     }
 
     /**
@@ -84,4 +90,5 @@ class FlightController extends Controller
     {
         //
     }
+
 }

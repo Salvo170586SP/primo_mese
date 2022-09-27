@@ -22,6 +22,7 @@
                         <th scope="col">Nome</th>
                         <th scope="col">Cognome</th>
                         <th scope="col">Data di Nascita</th>
+                        <th scope="col">Voli prenotati</th>
                         <th scope="col"></th>
                     </tr>
                 </thead>
@@ -33,6 +34,7 @@
                             <td>{{ $passenger->Name }}</td>
                             <td>{{ $passenger->Surname }}</td>
                             <td>{{ $passenger->Birthday }}</td>
+                            <td class="py-4"><a class="btn btn-sm btn-primary " href="{{ route('admin.flights.show', $passenger->id) }}">Voli prenotati</a></td>
                             <td class="d-flex justify-content-end align-items-start py-4">
                                 <a class="btn btn-sm btn-primary"
                                     href="{{ route('admin.passengers.show', $passenger->id) }}">Vedi</a>
@@ -53,6 +55,7 @@
                     @endforelse
 
                 </tbody>
+                {{ $passengers->links() }}
             </table>
         </div>
     </div>

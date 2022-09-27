@@ -13,4 +13,11 @@ class Passenger extends Model
         'Name', 'Surname', 'Birthday'
     ];
 
+    /**
+     * The users that belong to the hobby.
+     */
+    public function flights()
+    {
+        return $this->belongsToMany(Flight::class);
+    }
 }
