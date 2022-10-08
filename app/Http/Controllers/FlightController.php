@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Flight;
 use App\Models\Passenger;
 use Illuminate\Http\Request;
+use Illuminate\Database\Eloquent\Builder;
+
 
 class FlightController extends Controller
 {
@@ -15,9 +17,9 @@ class FlightController extends Controller
      */
     public function index()
     {
-        $flights = Flight::all();
+        $flights = Flight::paginate(5);
 
-        return view('admin.flights.index',compact('flights'));
+        return view('admin.flights.index', compact('flights'));
     }
 
     /**
@@ -52,9 +54,12 @@ class FlightController extends Controller
 
         $passenger = Passenger::find($id);
         $flights = Passenger::find($id)->flights;
+        
+        $flightsOff = Flight::whereDoesntHave('passengers', function (Builder $query) use ($id){
+            $query->where('passenger_id', $id);
+        })->get();
 
-
-        return view('admin.flights.show', compact('flights', 'passenger'));
+        return view('admin.flights.show', compact('flights', 'passenger','flightsOff'));
     }
 
     /**
@@ -91,4 +96,30 @@ class FlightController extends Controller
         //
     }
 
+
+    public function detachFlight($flight_id, $passenger_id)
+    {
+
+        $passenger = Passenger::findOrFail($passenger_id);
+        $passenger->flights()->detach($flight_id);
+
+        return back();
+    }
+
+    public function detachFlightAll($passenger_id)
+    {
+
+        $passenger = Passenger::findOrFail($passenger_id);
+        $passenger->flights()->detach();
+
+        return back();
+    }
+
+    public function addFlight(Request $request)
+    {
+        $passenger = Passenger::findOrFail($request->passenger_id);
+        $passenger->flights()->attach($request->flight_id);
+
+        return back();
+    }
 }

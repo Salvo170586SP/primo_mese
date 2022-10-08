@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Passenger;
+use App\Models\Flight;
 use Illuminate\Http\Request;
 
 class PassengerController extends Controller

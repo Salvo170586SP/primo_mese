@@ -15,6 +15,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('admin.flights.index') }}">Voli</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{ route('admin.capitans.index') }}">Capitani</a>
+          </li>
         </ul>
       </div>
     </div>

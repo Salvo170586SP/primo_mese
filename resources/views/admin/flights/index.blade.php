@@ -31,7 +31,7 @@
                     @endforelse
                 </tbody>
             </table>
-            
+            {{ $flights->links() }}
         </div>
     </div>
 @endsection

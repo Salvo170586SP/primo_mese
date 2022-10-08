@@ -2,11 +2,11 @@
 @section('title', 'Passeggeri')
 @section('contain')
     <div class="row">
-        <div class="col-12">
+        <div class="offset-2 col-8 d-flex justify-content-between align-items-center">
             <h1>Passeggeri</h1>
             <a class="btn btn-outline-primary" href="{{ route('admin.passengers.create') }}">Aggiungi Passeggero</a>
         </div>
-        <div class="col-12 my-3">
+        <div class="offset-2 col-8 my-3">
                 @if (session('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <strong>{{ session('success') }}</strong>
@@ -55,8 +55,8 @@
                     @endforelse
 
                 </tbody>
-                {{ $passengers->links() }}
             </table>
+            {{ $passengers->links() }}
         </div>
     </div>
 @endsection

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PassengerController;
 use App\Http\Controllers\FlightController;
+use App\Http\Controllers\CapitanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,19 +17,22 @@ use App\Http\Controllers\FlightController;
 */
 
 Route::get('/', function () {
-    return view('admin.layouts.home');
+  return view('admin.layouts.home');
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+  return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 
 Route::prefix('admin')->name('admin.')->group(function () {
   Route::resource('passengers', PassengerController::class);
   Route::resource('flights', FlightController::class);
-
+  Route::resource('capitans', CapitanController::class);
+  Route::get('detachFlight/{id}/{passenger}', [FlightController::class, 'detachFlight'])->name('detachFlight');
+  Route::get('detachFlightAll/{passenger}', [FlightController::class, 'detachFlightAll'])->name('detachFlightAll');
+  Route::get('addFlight',[FlightController::class, 'addFlight'])->name('addFlight');
 });
