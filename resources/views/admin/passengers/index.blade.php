@@ -2,7 +2,7 @@
 @section('title', 'Passeggeri')
 @section('contain')
     <div class="row">
-        <div class="offset-2 col-8 d-flex justify-content-between align-items-center">
+        <div class="col-12 d-flex justify-content-between align-items-center">
             <h1>Passeggeri</h1>
             <a class="btn btn-outline-primary" href="{{ route('admin.passengers.create') }}">Aggiungi Passeggero</a>
         </div>

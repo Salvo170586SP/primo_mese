@@ -14,7 +14,8 @@ class Flight extends Model
         'numero_volo',
         'partenza',
         'destinazione',
-        'data_volo'
+        'data_volo',
+        'capitan_id'
     ];
 
     /**
@@ -23,5 +24,10 @@ class Flight extends Model
     public function passengers()
     {
         return $this->belongsToMany(Passenger::class);
+    }
+
+    public function capitan()
+    {
+         return $this->belongsTo(Capitan::class);
     }
 }

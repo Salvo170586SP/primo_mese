@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Flight;
 use App\Models\Passenger;
+use App\Models\Capitan;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\Builder;
 
@@ -28,8 +29,9 @@ class FlightController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        //
+    {   
+        $capitans = Capitan::all();
+        return view('admin.flights.create', compact('capitans'));
     }
 
     /**
@@ -40,7 +42,12 @@ class FlightController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $new_flights = Flight::create($data);
+        
+
+        return redirect()->route('admin.flights.index');
     }
 
     /**
@@ -93,7 +100,9 @@ class FlightController extends Controller
      */
     public function destroy(Flight $flight)
     {
-        //
+        $flight->delete();
+
+        return back();
     }
 
 

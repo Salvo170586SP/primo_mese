@@ -14,4 +14,9 @@ class Capitan extends Model
         'surname',
         'birthday',
     ];
+
+   public function flight()
+   {
+        return $this->hasOne(Flight::class);
+   }
 }

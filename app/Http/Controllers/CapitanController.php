@@ -26,7 +26,7 @@ class CapitanController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.capitans.create');
     }
 
     /**
@@ -37,7 +37,11 @@ class CapitanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+
+        $new_capitan = Capitan::create($data);
+
+        return redirect()->route('admin.capitans.index');
     }
 
     /**
@@ -82,6 +86,8 @@ class CapitanController extends Controller
      */
     public function destroy(Capitan $capitan)
     {
-        //
+        $capitan->delete();
+
+        return back();
     }
 }
